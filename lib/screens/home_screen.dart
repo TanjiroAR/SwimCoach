@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:swimming/data/db.dart';
 
 import '../constants.dart';
-import '../widgets/slivrt_app_bar_delegate.dart';
 import 'swim_profile_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -99,7 +98,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         RefreshIndicator(
