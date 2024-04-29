@@ -165,17 +165,3 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 }
-
-// double convertTimeToMinutes(String time) {
-//   List<String> parts = time.split(':');
-//   int minutes = int.parse(parts[0]);
-//   int seconds = int.parse(parts[1]);
-//   return minutes + (seconds / 60);
-// }
-// int convertTimeToSeconds(String time) {
-//   List<String> parts = time.split(':');
-//   int minutes = int.parse(parts[0]);
-//   int seconds = int.parse(parts[1]);
-//   int milliseconds = int.parse(parts[2]);
-//   return minutes * 60 + seconds + (milliseconds / 1000).floor();
-// }

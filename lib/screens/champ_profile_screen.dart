@@ -671,29 +671,6 @@ class _ChampProfileState extends State<ChampProfile> {
     return false; // السباح غير موجود ويمكن إضافته
   }
 
-  Future<void> _pickStartAndEndDate(BuildContext context, bool isStart) async {
-    final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: initialDate,
-      firstDate: DateFormat('dd/MM/yyyy').parse(_startDate),
-      lastDate: DateFormat('dd/MM/yyyy').parse(_endDate),
-    );
-    if (pickedDate != null) {
-      DateFormat formatter = DateFormat('dd/MM/yyyy');
-      if (isStart) {
-        setState(() {
-          _startDate = formatter.format(pickedDate);
-          _selectedDate = _startDate;
-          initialDate = pickedDate;
-        });
-      } else {
-        setState(() {
-          _endDate = formatter.format(pickedDate).toLowerCase();
-        });
-      }
-    }
-  }
-
   // // عرض التقويم وتحديث اليوم الحالي عند اختيار تاريخ جديد
   Future<void> _pickRaceDate(BuildContext context, StateSetter setState) async {
     final DateTime? pickedDate = await showDatePicker(

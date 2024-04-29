@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:swimming/constants.dart';
 
 Widget myNavigationBar(selectedIndex, onItemTapped, context) {
   return BottomNavigationBar(

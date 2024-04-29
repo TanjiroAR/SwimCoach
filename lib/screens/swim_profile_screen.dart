@@ -225,15 +225,6 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
                   expandedHeight: screenHeight * 0.15,
                   pinned: true,
                   floating: false,
-                  // flexibleSpace: FlexibleSpaceBar(
-                  //   background: Container(
-                  //     padding: EdgeInsets.only(
-                  //         top: MediaQuery.of(context).padding.top * 4),
-                  //     child: Center(
-                  //       child: _buildAvatar(screenHeight),
-                  //     ),
-                  //   ),
-                  // ),
                 ),
                 SliverPersistentHeader(
                   delegate: SliverAppBarDelegate(
@@ -474,17 +465,6 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
     );
   }
 
-  // Widget _buildAvatar(double screenHeight) {
-  //   return Stack(
-  //     alignment: Alignment.bottomCenter,
-  //     children: [
-  //       CircleAvatar(
-  //         radius: screenHeight * 0.095,
-  //         backgroundImage: const AssetImage("images/user.png"),
-  //       ),
-  //     ],
-  //   );
-  // }
 
   Widget _buildTrainingDay() {
     return FutureBuilder<dynamic>(

@@ -76,14 +76,6 @@ class _ChampPageState extends State<ChampPage> {
                               subtitle: Text("${champData['start'].toString()} - ${champData['end'].toString()}"), // عرض الوقت
                               leading: const Icon(Icons.circle),
                               onTap: () async{
-                                // List<Map> tableNames = await sqlDb.readData(
-                                //   '''
-                                //   SELECT * FROM free_50m
-                                //   '''
-                                // );
-                                // if (kDebugMode) {
-                                //   print('All table names: $tableNames');
-                                // }
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (_) {
@@ -123,15 +115,6 @@ class _ChampPageState extends State<ChampPage> {
                   },
                 ),
               );
-              // showModalBottomSheet(
-              //   useSafeArea: true,
-              //   context: context,
-              //   isScrollControlled: true,
-              //   builder: (BuildContext context) {
-              //     return const AddChampBottomSheet();
-              //   },
-              // );
-              // أضف هنا الإجراء المطلوب عند الضغط على الزر العائم
             },
             // backgroundColor: Colors.blue,// لون خلفية الزر
             child: const Icon(Icons.add),

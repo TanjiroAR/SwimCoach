@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swimming/constants.dart';
 import 'package:swimming/data/db.dart';
@@ -143,8 +142,6 @@ class _SwimPageState extends State<SwimPage> {
                               ),
                               trailing: IconButton(
                                 onPressed: () {
-                                  final TextEditingController nameController =
-                                      TextEditingController();
                                   showModalBottomSheet(
                                     useSafeArea: true,
                                     context: context,

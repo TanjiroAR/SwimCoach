@@ -520,24 +520,3 @@ class _AddSwimmerBottomSheetState extends State<AddSwimmerBottomSheet> {
     return picked ?? TimeOfDay.now();
   }
 }
-
-// Widget _buildAvatar(context) {
-//   return Stack(
-//     alignment: Alignment.bottomCenter,
-//     children: [
-//       const CircleAvatar(
-//         radius: 90,
-//         backgroundImage: AssetImage("images/user.png"),
-//       ),
-//       Positioned(
-//         bottom: 0,
-//         child: IconButton(
-//           color: Theme.of(context).colorScheme.primary,
-//           icon: const Icon(Icons.edit),
-//           onPressed: () {},
-//         ),
-//       ),
-//     ],
-//   );
-// }
-

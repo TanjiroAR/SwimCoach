@@ -211,13 +211,6 @@ class _HomePageState extends State<HomePage> {
                                     : Colors.white,
                               ),
                               onTap: () {
-                                // Navigator.of(context).push(
-                                //   MaterialPageRoute(
-                                //     builder: (_) {
-                                //       return const NewSwimmerDetailsScreen(inDay: true, come: false,swimmerName: "أحمد رجب",);
-                                //     },
-                                //   ),
-                                // );
                                 final now = DateTime.now(); // الوقت الحالي
                                 final formatter = DateFormat(
                                     'EEEE'); // تنسيق اليوم كامل (مثل الاثنين، الثلاثاء، الخ)
@@ -309,35 +302,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-// FutureBuilder(
-//   future: fetchRacesHappeningToday(),
-//   builder: (context, snapshot){
-//     if (snapshot.connectionState == ConnectionState.waiting) {
-//       return const Center(child: CircularProgressIndicator());
-//     }else if (snapshot.hasError) {
-//       return const Center(child: Text('حدث خطأ'));
-//     }else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-//       return const Center(child: Text('لا يوجد سباقات اليوم'));
-//     }else{
-//       return ListView.builder(
-//         itemCount: snapshot.data!.length,
-//           itemBuilder: (context, index){
-//             Map<String, dynamic> data = snapshot.data![index];
-//             return Card(
-//               child: ListTile(
-//                 title: Text(data['swimmerName']),
-//                 subtitle: Text("${data['time']}"),
-//                 leading: Icon(
-//                   Icons.circle,
-//                   color: swimmerData['come'] == 'true'
-//                       ? Colors.lightGreen
-//                       : Colors.white,
-//                 ),
-//                 trailing: const Icon(Icons.emoji_events),
-//               ),
-//             );
-//           },
-//       );
-//     }
-//   },
-// ),
