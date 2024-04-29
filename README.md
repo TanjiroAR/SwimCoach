@@ -1,4 +1,4 @@
-# Swimming App
+# SwimCoach
 
 Introducing SwimCoach: Revolutionizing Swim Training and Management
 
