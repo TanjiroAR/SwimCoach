@@ -1,4 +1,4 @@
-# swimming
+# SwimCoach
 
 A new Flutter project.
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:swimming/screens/champ_screen.dart';
-import 'package:swimming/screens/home_screen.dart';
-import 'package:swimming/screens/swim_screen.dart';
-import 'package:swimming/widgets/drawer.dart';
-import 'package:swimming/widgets/navigation_bar.dart';
+import 'package:SwimCoach/screens/champ_screen.dart';
+import 'package:SwimCoach/screens/home_screen.dart';
+import 'package:SwimCoach/screens/swim_screen.dart';
+import 'package:SwimCoach/widgets/drawer.dart';
+import 'package:SwimCoach/widgets/navigation_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

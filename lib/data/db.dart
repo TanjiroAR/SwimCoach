@@ -44,7 +44,7 @@ class SqlDb {
   ];
   static Database? _db;
 
-  String myDatabase = "swimming_database.db";
+  String myDatabase = "SwimCoach_database.db";
   Future<Database?> get db async {
     if (_db == null) {
       _db = await initialDb();

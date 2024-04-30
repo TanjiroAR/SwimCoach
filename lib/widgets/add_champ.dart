@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:swimming/constants.dart';
-import 'package:swimming/data/db.dart';
+import 'package:SwimCoach/constants.dart';
+import 'package:SwimCoach/data/db.dart';
 
 class AddChampScreen extends StatefulWidget {
   const AddChampScreen({super.key});

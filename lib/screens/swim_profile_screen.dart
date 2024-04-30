@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:swimming/constants.dart';
-import 'package:swimming/widgets/line_chart_dialog.dart';
+import 'package:SwimCoach/constants.dart';
+import 'package:SwimCoach/widgets/line_chart_dialog.dart';
 
 import '../data/db.dart';
 import '../widgets/slivrt_app_bar_delegate.dart';

@@ -1,4 +1,4 @@
-package com.example.swimming
+package com.example.SwimCoach
 
 import io.flutter.embedding.android.FlutterActivity
 

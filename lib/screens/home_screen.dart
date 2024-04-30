@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:swimming/data/db.dart';
+import 'package:SwimCoach/data/db.dart';
 
 import '../constants.dart';
 import 'swim_profile_screen.dart';

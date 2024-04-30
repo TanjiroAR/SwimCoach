@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:swimming/constants.dart';
-import 'package:swimming/data/db.dart';
+import 'package:SwimCoach/constants.dart';
+import 'package:SwimCoach/data/db.dart';
 
 import '../widgets/add_champ.dart';
 import 'champ_profile_screen.dart';

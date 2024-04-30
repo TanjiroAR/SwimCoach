@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:swimming/screens/main_screen.dart';
-import 'package:swimming/widgets/dark_theme.dart';
-import 'package:swimming/widgets/light_theme.dart';
+import 'package:SwimCoach/screens/main_screen.dart';
+import 'package:SwimCoach/widgets/dark_theme.dart';
+import 'package:SwimCoach/widgets/light_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: (_ , child){
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Swimming',
+          title: 'SwimCoach',
           theme: lightTheme,
           darkTheme: darkTheme,
           localizationsDelegates: const [
