@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:SwimCoach/constants.dart';
-import 'package:SwimCoach/data/db.dart';
 
 Widget myDrawer(context){
-  SqlDb sqlDb = SqlDb();
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
