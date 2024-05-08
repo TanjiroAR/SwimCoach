@@ -15,7 +15,7 @@ dependencies:
 
 
   cupertino_icons: ^1.0.6
-  fl_chart: ^0.36.0
+  fl_chart: ^0.67.0
   intl: ^0.19.0
   sqflite: ^2.3.3
   path: ^1.9.0

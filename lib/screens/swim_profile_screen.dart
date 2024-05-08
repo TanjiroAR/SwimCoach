@@ -1,4 +1,4 @@
-import 'package:fl_chart/fl_chart.dart';
+// import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -141,21 +141,21 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
     return response;
   }
 
-  List<FlSpot> getSpots(List<Map> data) {
-    return data.map((map) {
-      final dateString = map['date'] as String;
-      final timeString = map['raceName'] as String;
-      final timeParts = timeString.split(':').map(int.parse).toList();
-      final minutes = timeParts[0];
-      final seconds = timeParts[1];
-      final milliseconds = timeParts[2];
-      final DateFormat dateFormat = DateFormat('dd/MM/yyyy');
-      final DateTime dateTime = dateFormat.parse(dateString);
-      final dateValue = dateTime.millisecondsSinceEpoch.toDouble();
-      final timeValue = minutes + (seconds / 60) + (milliseconds / 60000);
-      return FlSpot(dateValue, timeValue);
-    }).toList();
-  }
+  // List<FlSpot> getSpots(List<Map> data) {
+  //   return data.map((map) {
+  //     final dateString = map['date'] as String;
+  //     final timeString = map['raceName'] as String;
+  //     final timeParts = timeString.split(':').map(int.parse).toList();
+  //     final minutes = timeParts[0];
+  //     final seconds = timeParts[1];
+  //     final milliseconds = timeParts[2];
+  //     final DateFormat dateFormat = DateFormat('dd/MM/yyyy');
+  //     final DateTime dateTime = dateFormat.parse(dateString);
+  //     final dateValue = dateTime.millisecondsSinceEpoch.toDouble();
+  //     final timeValue = minutes + (seconds / 60) + (milliseconds / 60000);
+  //     return FlSpot(dateValue, timeValue);
+  //   }).toList();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +204,7 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: Theme.of(context).colorScheme.background.withOpacity(0.7),
+          color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
           child: RefreshIndicator(
             onRefresh: _refreshData,
             child: CustomScrollView(
@@ -437,8 +437,8 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
           ? ElevatedButton(
               style: ButtonStyle(
                 backgroundColor:
-                    _come ? MaterialStateProperty.all(Colors.lightGreen) : null,
-                foregroundColor: MaterialStateProperty.all(
+                    _come ? WidgetStateProperty.all(Colors.lightGreen) : null,
+                foregroundColor: WidgetStateProperty.all(
                     Theme.of(context).textTheme.bodyLarge!.color),
               ),
               onPressed: _come
@@ -487,7 +487,7 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
                   _showDaysDialog(context);
                 },
                 icon: const Icon(Icons.edit),
-                style: ButtonStyle(iconSize: MaterialStateProperty.all(40)),
+                style: ButtonStyle(iconSize: WidgetStateProperty.all(40)),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.3,
@@ -577,7 +577,7 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
                     children: [
                       ElevatedButton(
                         style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all(
+                          foregroundColor: WidgetStateProperty.all(
                               Theme.of(context).textTheme.bodyLarge!.color),
                         ),
                         onPressed: isAdd
@@ -622,8 +622,8 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white10),
-                        foregroundColor: MaterialStateProperty.all(
+                            WidgetStateProperty.all<Color>(Colors.white10),
+                        foregroundColor: WidgetStateProperty.all(
                             Theme.of(context).textTheme.bodyLarge!.color),
                       ),
                       child: const Text("إلغاء"),
@@ -705,8 +705,8 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.lightGreen),
-                        foregroundColor: MaterialStateProperty.all(
+                            WidgetStateProperty.all<Color>(Colors.lightGreen),
+                        foregroundColor: WidgetStateProperty.all(
                             Theme.of(context).textTheme.bodyLarge!.color),
                       ),
                       child: Text(
@@ -887,7 +887,7 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
                 Navigator.of(context).pop();
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
               ),
               child: const Text(
                 'الغاء',
@@ -902,7 +902,7 @@ class _SwimmerDetailsScreenState extends State<SwimmerDetailsScreen> {
                 Navigator.of(context).pop();
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                backgroundColor: WidgetStateProperty.all<Color>(Colors.red),
               ),
               child: const Text(
                 'حذف',

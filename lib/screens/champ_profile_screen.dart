@@ -127,7 +127,7 @@ class _ChampProfileState extends State<ChampProfile> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: Theme.of(context).colorScheme.background.withOpacity(0.7),
+          color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
           child: RefreshIndicator(
             onRefresh: _refreshData,
             child: CustomScrollView(
@@ -564,57 +564,61 @@ class _ChampProfileState extends State<ChampProfile> {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.03),
-                  FutureBuilder(
-                    future: readData(age, gender),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
-                      if (snapshot.hasData) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: snapshot.data?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            if (selected.length != snapshot.data!.length) {
-                              selected = List.generate(
-                                  snapshot.data!.length, (index) => false);
-                            }
-                            var swimmer = snapshot.data![index];
-                            return Card(
-                              color: selected[index]
-                                  ? Colors.lightGreen
-                                  : Theme.of(context).colorScheme.background,
-                              child: ListTile(
-                                title: Text(swimmer['name']),
-                                subtitle: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('${swimmer['age']} : العمر '),
-                                    Text('${swimmer['gender']} : الجنس '),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    selected[index] = !selected[index];
-                                    // إضافة أو حذف اسم السباح من قائمة المشاركين
-                                    if (selected[index]) {
-                                      participants.add(swimmer['name']);
-                                    } else {
-                                      participants.remove(swimmer['name']);
+                  SizedBox(
+                    height: screenHeight * 0.4,
+                    width: screenHeight  * 0.6,
+                    child: FutureBuilder(
+                      future: readData(age, gender),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
+                        if (snapshot.hasData) {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: snapshot.data?.length ?? 0,
+                            itemBuilder: (context, index) {
+                              if (selected.length != snapshot.data!.length) {
+                                selected = List.generate(
+                                    snapshot.data!.length, (index) => false);
+                              }
+                              var swimmer = snapshot.data![index];
+                              return Card(
+                                color: selected[index]
+                                    ? Colors.lightGreen
+                                    : Theme.of(context).colorScheme.surface,
+                                child: ListTile(
+                                  title: Text(swimmer['name']),
+                                  subtitle: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('${swimmer['age']} : العمر '),
+                                      Text('${swimmer['gender']} : الجنس '),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    setState(() {
+                                      selected[index] = !selected[index];
+                                      // إضافة أو حذف اسم السباح من قائمة المشاركين
+                                      if (selected[index]) {
+                                        participants.add(swimmer['name']);
+                                      } else {
+                                        participants.remove(swimmer['name']);
+                                      }
+                                    });
+                                    // loadStagesFromDatabase();
+                                    if (kDebugMode) {
+                                      print(participants);
                                     }
-                                  });
-                                  // loadStagesFromDatabase();
-                                  if (kDebugMode) {
-                                    print(participants);
-                                  }
-                                },
-                              ),
-                            );
-                          },
-                        );
-                      }
-                      return const CustomText(
-                          text: "لا يوجد سباحين", fontWeight: FontWeight.bold);
-                    },
+                                  },
+                                ),
+                              );
+                            },
+                          );
+                        }
+                        return const CustomText(
+                            text: "لا يوجد سباحين", fontWeight: FontWeight.bold);
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -744,8 +748,8 @@ class _ChampProfileState extends State<ChampProfile> {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white10),
-                        foregroundColor: MaterialStateProperty.all(
+                            WidgetStateProperty.all<Color>(Colors.white10),
+                        foregroundColor: WidgetStateProperty.all(
                             Theme.of(context).textTheme.bodyLarge!.color),
                       ),
                       child: const Text("إلغاء"),
@@ -801,8 +805,8 @@ class _ChampProfileState extends State<ChampProfile> {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.lightGreen),
-                        foregroundColor: MaterialStateProperty.all(
+                            WidgetStateProperty.all<Color>(Colors.lightGreen),
+                        foregroundColor: WidgetStateProperty.all(
                             Theme.of(context).textTheme.bodyLarge!.color),
                       ),
                       child: Text(
@@ -860,7 +864,7 @@ class _ChampProfileState extends State<ChampProfile> {
                 Navigator.of(context).pop();
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
               ),
               child: const Text(
                 'الغاء',
@@ -874,7 +878,7 @@ class _ChampProfileState extends State<ChampProfile> {
                 Navigator.of(context).pop();
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                backgroundColor: WidgetStateProperty.all<Color>(Colors.red),
               ),
               child: const Text(
                 'حذف',

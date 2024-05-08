@@ -165,7 +165,9 @@ class _SwimPageState extends State<SwimPage> {
                                       );
                                     },
                                   ),
-                                );
+                                ).then((_) {
+                                  _refreshData();
+                                });
                               },
                             ),
                           );
@@ -199,7 +201,9 @@ class _SwimPageState extends State<SwimPage> {
                 builder: (BuildContext context) {
                   return const AddSwimmerBottomSheet();
                 },
-              );
+              ).then((_) {
+                _refreshData();
+              });
             },
             child: const Icon(Icons.add),
           ),

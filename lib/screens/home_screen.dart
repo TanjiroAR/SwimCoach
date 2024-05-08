@@ -231,7 +231,9 @@ class _HomePageState extends State<HomePage> {
                                         );
                                       },
                                     ),
-                                  );
+                                  ).then((_) {
+                                    _refreshData();
+                                  });
                                 } else if (swimmerData['come'] == "false" &&
                                     day == currentDay) {
                                   Navigator.of(context).push(
@@ -246,7 +248,9 @@ class _HomePageState extends State<HomePage> {
                                         );
                                       },
                                     ),
-                                  );
+                                  ).then((_) {
+                                    _refreshData();
+                                  });
                                 } else {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
@@ -260,7 +264,9 @@ class _HomePageState extends State<HomePage> {
                                         );
                                       },
                                     ),
-                                  );
+                                  ).then((_) {
+                                    _refreshData();
+                                  });
                                 }
                               },
                             ),

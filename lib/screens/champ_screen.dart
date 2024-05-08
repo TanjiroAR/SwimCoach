@@ -82,8 +82,9 @@ class _ChampPageState extends State<ChampPage> {
                                       return ChampProfile(champName: champData['name'].toString(), startChamp: champData['start'].toString(), endChamp: champData['end'].toString(),);
                                     },
                                   ),
-                                );
-                                // اضف أي مزايا إضافية هنا للتفاعل مع العنصر
+                                ).then((_) {
+                                  _refreshData();
+                                });
                               },
                             ),
                           );
@@ -114,7 +115,9 @@ class _ChampPageState extends State<ChampPage> {
                     return const AddChampScreen();
                   },
                 ),
-              );
+              ).then((_) {
+                _refreshData();
+              });
             },
             // backgroundColor: Colors.blue,// لون خلفية الزر
             child: const Icon(Icons.add),

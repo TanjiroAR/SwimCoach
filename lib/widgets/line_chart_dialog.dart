@@ -101,27 +101,39 @@ class _MyWidgetState extends State<MyWidget> {
                     maxX: filteredData.length.toDouble() - 1,
                     minY: 0,
                     maxY: interval * 10,
-                    gridData: FlGridData(show: false),
-                    titlesData: FlTitlesData(
-                      bottomTitles: SideTitles(
-                        showTitles: true,
-                        getTitles: (value) {
-                          int index = value.toInt();
-                          if (index < filteredData.length) {
-                            return DateFormat('dd/MM').format(
-                                DateFormat('dd/MM/yyyy')
-                                    .parse(filteredData[index]['date']));
-                          }
-                          return '';
-                        },
-                        margin: 8,
+                    gridData: const FlGridData(show: false),
+                    titlesData:
+
+                    FlTitlesData(
+                      topTitles: const AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
                       ),
-                      leftTitles: SideTitles(
-                        showTitles: true,
-                        interval: interval,
-                        getTitles: (value) {
-                          return '${value.toInt()}';
-                        },
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          reservedSize: 60,
+                          getTitlesWidget: (value, meta) {
+                            final DateTime date = DateFormat('dd/MM/yyyy').parse(filteredData[value.toInt()]['date']);
+                            return SideTitleWidget(
+                              axisSide: meta.axisSide,
+                              space: 10.0,
+                              child: Text(DateFormat('dd/MM').format(date)),
+                            );
+                          },
+                        ),
+                      ),
+                      leftTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: false,
+                          getTitlesWidget: (value, meta) {
+                            return SideTitleWidget(
+                              axisSide: meta.axisSide,
+                              space: 10.0,
+                              child: Text(value.toString()),
+                            );
+                          },
+                          interval: interval,
+                        ),
                       ),
                     ),
                     borderData: FlBorderData(show: false),
@@ -133,23 +145,23 @@ class _MyWidgetState extends State<MyWidget> {
                           return FlSpot(e.key.toDouble(), timeInSeconds);
                         }).toList(),
                         isCurved: false,
-                        colors: [Colors.blue],
+                        color: Colors.blue,
                         barWidth: 5,
                         isStrokeCapRound: true,
-                        dotData: FlDotData(show: true),
+                        dotData: const FlDotData(show: true),
                         belowBarData: BarAreaData(show: true),
                       ),
                     ],
                     lineTouchData: LineTouchData(
                       touchTooltipData: LineTouchTooltipData(
-                        tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
                         getTooltipItems: (List<LineBarSpot> touchedSpots) {
                           return touchedSpots.map((spot) {
-                            final String time =
-                            convertSecondsToFormattedString(spot.y);
-                            return LineTooltipItem(
-                                time, const TextStyle(color: Colors.white));
+                            final String time = convertSecondsToFormattedString(spot.y);
+                            return LineTooltipItem(time, const TextStyle(color: Colors.white));
                           }).toList();
+                        },
+                        getTooltipColor: (LineBarSpot spot) {
+                          return Colors.blueGrey.withOpacity(0.8);
                         },
                       ),
                     ),
