@@ -20,7 +20,8 @@ dependencies:
   sqflite: ^2.3.3
   path: ^1.9.0
   flutter_screenutil: ^5.9.0
-  flutter_localization: ^0.2.0
+  flutter_localizations:
+    sdk: flutter
 dev_dependencies:
   flutter_test:
     sdk: flutter
