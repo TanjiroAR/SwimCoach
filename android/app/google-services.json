@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036821185491",
+    "project_id": "swim-coach-94b39",
+    "storage_bucket": "swim-coach-94b39.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036821185491:android:43842fb4fba2c13be3a526",
+        "android_client_info": {
+          "package_name": "com.example.SwimCoach"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApyA5yb950Z8k0d4McPMpXs4iDMrcbonc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

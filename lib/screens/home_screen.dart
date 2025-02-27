@@ -23,15 +23,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<List<Map<String, dynamic>>> fetchRacesHappeningToday() async {
-    String currentDate = DateFormat('dd/MM/yyyy').format(myDay);
+    final currentDate = DateFormat('yyyy-MM-dd').format(myDay);
+    debugPrint("جاري البحث عن سباقات بتاريخ: $currentDate"); // ✔️
+
     List<Map<String, dynamic>> raceDataList = [];
+
     for (String race in SqlDb.races) {
-      List<Map> results = await sqlDb.readData('''
-        SELECT * FROM $race
-        WHERE date = '$currentDate';
-      ''');
-      raceDataList.addAll(results.map((row) => row.cast<String, dynamic>()));
+      final query = '''
+      SELECT * FROM $race 
+      WHERE date = '$currentDate'
+    ''';
+
+      debugPrint("الاستعلام: $query"); // ✔️
+
+      List<Map> results = await sqlDb.readData(query);
+      debugPrint("النتائج لجدول $race: ${results.length}"); // ✔️
+
+      raceDataList.addAll(results.cast<Map<String, dynamic>>());
     }
+
     return raceDataList;
   }
 
@@ -49,13 +59,11 @@ class _HomePageState extends State<HomePage> {
 
   // دالة لتحديد اليوم الحالي
   void getCurrentDay() {
-    final now = DateTime.now(); // الوقت الحالي
-    final formatter =
-        DateFormat('EEEE'); // تنسيق اليوم كامل (مثل الاثنين، الثلاثاء، الخ)
-    currentDay =
-        formatter.format(now).toLowerCase(); // تحويل الوقت الحالي إلى اسم اليوم
-    setState(() {}); // تحديث واجهة المستخدم
+    final formatter = DateFormat('EEEE', 'en_US'); // إجباري استخدام الإنجليزية
+    currentDay = formatter.format(DateTime.now()).toLowerCase();
+    setState(() {});
   }
+
 
   // الدالة للحصول على اسم اليوم باللغة العربية
   String getArabicDayName(String currentDay) {
@@ -82,16 +90,19 @@ class _HomePageState extends State<HomePage> {
   Future<void> _pickDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2022),
-      lastDate: DateTime(2025),
+      initialDate: myDay,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
     );
-    if (pickedDate != null) {
-      final formatter = DateFormat('EEEE');
+
+    if (pickedDate != null && pickedDate != myDay) {
       setState(() {
-        currentDay = formatter.format(pickedDate).toLowerCase();
         myDay = pickedDate;
+        currentDay = DateFormat('EEEE', 'en_US').format(pickedDate).toLowerCase(); // الإنجليزية إجباري
       });
+
+      // إعادة تحميل البيانات بعد تغيير التاريخ
+      _refreshData();
     }
   }
 
@@ -125,6 +136,7 @@ class _HomePageState extends State<HomePage> {
               ),
               FutureBuilder<List<Map<String, dynamic>>>(
                 future: fetchRacesHappeningToday(),
+                key: ValueKey<DateTime>(myDay),
                 builder: (BuildContext context,
                     AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -150,8 +162,8 @@ class _HomePageState extends State<HomePage> {
                               subtitle: Text(swimmer['time']),
                               trailing: Column(
                                 children: [
-                                  const Icon(Icons.emoji_events,color: Colors.yellowAccent,),
-                                  Text(swimmer['champName']),
+                                  const Icon(Icons.emoji_events, color: Colors.yellowAccent),
+                                  Text(swimmer['champName'] ?? 'لا يوجد بطولة'),
                                 ],
                               ),
 
@@ -204,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                                   swimmerData['time'].toString()), // عرض الوقت
                               leading: Icon(
                                 Icons.circle,
-                                color: swimmerData['come'] == 'true'
+                                color: swimmerData['come'] == 1 // إذا كانت القيمة رقم
                                     ? Colors.lightGreen
                                     : Colors.white,
                               ),
@@ -291,17 +303,17 @@ class _HomePageState extends State<HomePage> {
         ),
         // Text("HI"),
         Positioned(
-          bottom: 16,
-          right: 16,
+          bottom: 80, // ابتعد عن الحافة السفلية
+          right: 24,
           child: FloatingActionButton(
             onPressed: () {
+              debugPrint("تم الضغط على الزر!"); // تأكد من ظهور هذه الرسالة في الكونسول
               _pickDate(context);
-              // fetchRacesHappeningToday();
             },
             tooltip: 'اختر تاريخ',
             child: const Icon(Icons.calendar_today),
           ),
-        ),
+        )
       ],
     );
   }
